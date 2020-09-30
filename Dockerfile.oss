@@ -42,7 +42,8 @@ RUN set -eux \
     make -j $(nproc); \
     cp /tmp/nginx/objs/ngx_http_headers_more_filter_module.so /usr/lib/nginx/modules; \
     apt-get purge -y --auto-remove build-essential libpcre3-dev git; \
-    rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
+    rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*; \
+    apt-get install nginx-module-image-filter 
 
 COPY common/etc /etc
 COPY common/docker-entrypoint.sh /docker-entrypoint.sh
